@@ -1,0 +1,7 @@
+svg {
+  border: 1px solid #CCC;
+}
+
+svg line {
+  transition: all 0.2s ease;
+}
