@@ -14,7 +14,10 @@ The `drawLines` property accepts a data object that is formed with the `data.rel
 
 
 #Basic Chart Deployment
-var data = ch.data([1,3,5,7,8,4,3,1,4])
+Below is an example of creating a chart with ten elements.
+
+```javascript
+var data = ch.data([1,3,5,7,8,4,3,2,1,4])
     .relative();
 
 ch(".container")
@@ -22,3 +25,4 @@ ch(".container")
   .drawLines(data)
   .drawDots(data)
   .append();
+```
