@@ -30,6 +30,19 @@ var ch = (function () {
     setNumber: function (a, b) {
       if (typeof a == "number") return a;
       else return b;
+    },
+    multiRange: function (arr) {
+      var mins = arr.map(function (o) {
+        return Math.min.apply(null, o);
+      });
+      var maxs = arr.map(function (o) {
+        return Math.max.apply(null, o);
+      });
+
+      return {
+        mins: mins,
+        maxs: maxs
+      };
     }
   };
 
@@ -39,7 +52,7 @@ var ch = (function () {
     this.SVGElem.setAttribute("width", width);
     this.SVGElem.setAttribute("height", height);
 
-    this.SVGElem.setAttribute("viewBox", "0 0 1 1");
+    this.SVGElem.setAttribute("viewBox", "-0.1 -0.1 1.2 1.2");
 
     this.SVGElem.setAttribute("version", "1.1");
     this.SVGElem.setAttribute("xmlns", "http://www.w3.org/2000/svg");
@@ -47,40 +60,66 @@ var ch = (function () {
     return this;
   };
 
-  util.append = function (node) {
+  util.append = function (node, callback) {
     this.container.appendChild(node || this.SVGElem);
+    callback();
   };
 
   util.data = function (data, settings) {
     if (!settings) settings = {};
 
-    var range = {
-      min: util._tools.setNumber(settings.min, Math.min.apply(null, data)),
-      max: util._tools.setNumber(settings.max, Math.max.apply(null, data))
-    };
+    var range;
+    if (Array.isArray(data[0])) {
+      var multi_range = util._tools.multiRange(data);
+
+      range = {
+        min: util._tools.setNumber(settings.min, Math.min.apply(null, multi_range.mins)),
+        max: util._tools.setNumber(settings.max, Math.max.apply(null, multi_range.maxs))
+      };
+    } else {
+      range = {
+        min: util._tools.setNumber(settings.min, Math.min.apply(null, data)),
+        max: util._tools.setNumber(settings.max, Math.max.apply(null, data))
+      };
+    }
 
     range.range = range.max - range.min;
 
     return {
       range: range,
       relative: function () {
-        var len = data.length - 1;
+        if (Array.isArray(data[0])) {
+          return data.map(function (o, i) {
+            var len = o.length - 1;
 
-        return data.map(function (o, i) {
-          return {
-            x: i / len,
-            y: 1 - ((o - range.min) / range.range)
-          };
-        });
+            return o.map(function (p, j) {
+              return {
+                x: j / len,
+                y: 1 - ((p - range.min) / range.range)
+              };
+            });
+          });
+        } else {
+          var len = data.length - 1;
+
+          return [data.map(function (o, i) {
+            return {
+              x: i / len,
+              y: 1 - ((o - range.min) / range.range)
+            };
+          })];
+        }
       }
     };
   };
 
   util.drawLines = function (data) {
     data.forEach(function (o, i) {
-      if (i > 0) {
-        util.SVGElem.appendChild(util._tools.line(data[i - 1].x, data[i - 1].y, o.x, o.y, "orange", 0.003));
-      }
+      o.forEach(function (p, j) {
+        if (j > 0) {
+          util.SVGElem.appendChild(util._tools.line(o[j - 1].x, o[j - 1].y, p.x, p.y, "orange", 0.003));
+        }
+      });
     });
 
     return this;
@@ -88,7 +127,9 @@ var ch = (function () {
 
   util.drawDots = function (data) {
     data.forEach(function (o, i) {
-      util.SVGElem.appendChild(util._tools.circle(o.x, o.y, 0.003, "grey"));
+      o.forEach(function (p, j) {
+        util.SVGElem.appendChild(util._tools.circle(p.x, p.y, 0.003, "grey"));
+      });
     });
 
     return this;
@@ -106,12 +147,14 @@ function map (count, callback) {
 }
 
 var arr = map(50, function (x, y) { return y + Math.random() - 0.5; });
+var arr2 = map(50, function (x, y) { return y + Math.random() - 0.5; });
 
-var data = ch.data(arr)
+var data = ch.data([arr, arr2])
     .relative();
 
 ch(".container")
   .SVG(500, 500)
   .drawLines(data)
   .drawDots(data)
-  .append();
+  .append(null, function () {
+  });
