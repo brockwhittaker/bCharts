@@ -3,12 +3,89 @@
   <head>
     <meta charset="utf-8">
     <title></title>
-    <link rel="stylesheet" href="app/assets/css/main.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="../app/assets/css/main.css" media="screen" title="no title" charset="utf-8">
   </head>
   <body>
-    <div class="container"></div>
+    <div class="container">
+      <div id="bcharts-data-box"></div>
+    </div>
   </body>
-
-  <script src="../app/assets/js/events.js" charset="utf-8"></script>
-  <script src="../app/assets/js/utils.js" charset="utf-8"></script>
+  <script src="../app/assets/js/tools.js" charset="utf-8"></script>
 </html>
+<script type="text/javascript">
+
+var arr1 = _.mapReduce(new Array(50), function (a, b) {
+  return b + _.quant.normalDist(0, 0.5);
+});
+
+var arr2 = _.mapReduce(new Array(100), function (a, b) {
+  return b + _.quant.normalDist(0, 0.5);
+});
+
+(function () {
+  _.ajax({
+    type: "POST",
+    url: "../app/php/master.php",
+    data: {
+      chart: {
+        data: [arr1, arr2],
+        settings: {
+          draw: {
+            lines: true,
+            circles: true
+          },
+          area: {
+            // fill: ["rgba(255,100,100,0.2)", "rgba(100,100,255,0.2)"]
+          },
+          lineWidth: 2,
+          circleRadius: 3
+        }
+      }
+    },
+    callback: function (response) {
+      console.log(response);
+      response = JSON.parse(response);
+      _(".container").html(response.html, true);
+
+      response.scripts.forEach(function (o) {
+        var script = document.createElement("script");
+        script.innerHTML = o;
+        document.body.appendChild(script);
+      });
+
+      response.css.forEach(function (o) {
+        var style = document.createElement("style");
+        style.innerHTML = o;
+        document.head.appendChild(style);
+      });
+
+
+    },
+    dataType: null // "json"
+  });
+})();
+
+function Brandon () {
+  this.height = 62; // inches
+  this.weight = 200;
+  this.hasAbs = false;
+}
+
+Brandon.prototype = {
+  sleep: function () {
+    console.log("I'm going to bed at 9 because I'm a little bitch.");
+  },
+  bitch: function () {
+    console.log("I'll have you know, beats headphones suck.");
+  },
+  nerd: function () {
+    console.log("Look at all these integrals in my homework!!");
+  },
+  typicalDay: function () {
+    this.sleep();
+    this.bitch();
+    this.nerd();
+    this.sleep();
+  }
+}
+</script>
