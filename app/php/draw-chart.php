@@ -90,14 +90,28 @@ class Chart Extends ProcessData {
           $svg = new SVGRender();
           $svg->setHTML($x . "");
 
-          $text = $svg->text(10, $this->__getY($x), $settings["font"]["family"], $settings["font"]["weight"], $settings["font"]["size"]);
+          $text = $svg->text(
+              10,
+              $this->__getY($x),
+              $settings["font"]["family"],
+              $settings["font"]["weight"],
+              $settings["font"]["size"]
+          );
+
           array_push($texts, $text);
         }
 
         if ($settings["draw"]["axis"]["lines"]) {
           $svg = new SVGRender();
           $svg->setHTML($x . "");
-          $line = $svg->line($settings["padding"]["left"], $settings["dimensions"]["width"] - $settings["padding"]["right"], $this->__getY($x), $this->__getY($x), $settings["draw"]["axis"]["lineColor"], 1);
+          $line = $svg->line(
+              $settings["padding"]["left"],
+              $settings["dimensions"]["width"] - $settings["padding"]["right"],
+              $this->__getY($x),
+              $this->__getY($x),
+              $settings["draw"]["axis"]["lineColor"],
+              1
+          );
           array_push($lines, $line);
         }
       }
@@ -124,7 +138,14 @@ class Chart Extends ProcessData {
         }
 
         $svg = new SVGRender();
-        $circle = $svg->circle($arr[$x]["x"], $arr[$x]["y"], $settings["circleRadius"], ($settings["draw"]["circles"]) ? $this->__lineColor($index) : "transparent", $settings["circleRadius"], "transparent");
+        $circle = $svg->circle(
+            $arr[$x]["x"],
+            $arr[$x]["y"],
+            $settings["circleRadius"],
+            ($settings["draw"]["circles"]) ? $this->__lineColor($index) : "transparent",
+            $settings["circleRadius"],
+            "transparent"
+        );
         array_push($circles, $circle);
       }
 
