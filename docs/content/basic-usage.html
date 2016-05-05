@@ -1,0 +1,108 @@
+<h2>Making API Calls</h2>
+<p>
+  Making API Calls with Lavancier Charts is meant to be as simple as possible. We have distilled the entire process into a single API call. Let's look at an example of that call below.
+</p>
+
+<h3>Unstyled Chart API Call</h3>
+<pre><code class="javascript">
+$.ajax({
+  type: "POST",
+  url: "//lavancier.com/charts/api/v1",
+  data: {
+    chart: {
+      data: [
+        [100,105,99,97,98,99,101,100,98,99,99,100,103,111,109],
+        [100,102,101,99,104,102,101,97,92,93,93,95,98,97,96]
+      ]
+    }
+  },
+  callback: function (response) {
+    // append SVG HTML to the container
+    $(".svg-container").html(response.html, true);
+
+    // for each script, append to the DOM
+    response.scripts.forEach(function (o) {
+      var script = document.createElement("script");
+      script.innerHTML = o;
+      document.body.appendChild(script);
+    });
+
+    // for each stylesheet, append to the HEAD
+    response.css.forEach(function (o) {
+      var style = document.createElement("style");
+      style.innerHTML = o;
+      document.head.appendChild(style);
+    });
+  },
+  dataType: "json"
+});
+
+</code></pre>
+<h3>Output</h3>
+<div class="svg-container">
+<svg width="100%" height="60%" viewBox="0 0 1000 600" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M100 344.21052631579 L100 344.21052631579 L162.85714285714 196.84210526316 L225.71428571429 373.68421052632 L288.57142857143 432.63157894737 L351.42857142857 403.15789473684 L414.28571428571 373.68421052632 L477.14285714286 314.73684210526 L540 344.21052631579 L602.85714285714 403.15789473684 L665.71428571429 373.68421052632 L728.57142857143 373.68421052632 L791.42857142857 344.21052631579 L854.28571428571 255.78947368421 L917.14285714286 20 L980 78.947368421053 L980 580 L100 580 Z" stroke="transparent" stroke-width="0" fill="rgba(100,169,197,0.2)"></path><path d="M100 344.21052631579 L100 344.21052631579 L162.85714285714 285.26315789474 L225.71428571429 314.73684210526 L288.57142857143 373.68421052632 L351.42857142857 226.31578947368 L414.28571428571 285.26315789474 L477.14285714286 314.73684210526 L540 432.63157894737 L602.85714285714 580 L665.71428571429 550.52631578947 L728.57142857143 550.52631578947 L791.42857142857 491.57894736842 L854.28571428571 403.15789473684 L917.14285714286 432.63157894737 L980 462.10526315789 L980 580 L100 580 Z" stroke="transparent" stroke-width="0" fill="rgba(230,106,124,0.2)"></path><path d="M100 344.21052631579 L162.85714285714 196.84210526316 L225.71428571429 373.68421052632 L288.57142857143 432.63157894737 L351.42857142857 403.15789473684 L414.28571428571 373.68421052632 L477.14285714286 314.73684210526 L540 344.21052631579 L602.85714285714 403.15789473684 L665.71428571429 373.68421052632 L728.57142857143 373.68421052632 L791.42857142857 344.21052631579 L854.28571428571 255.78947368421 L917.14285714286 20 L980 78.947368421053 " stroke="rgb(100,169,197)" stroke-width="5" fill="transparent"></path><path d="M100 344.21052631579 L162.85714285714 285.26315789474 L225.71428571429 314.73684210526 L288.57142857143 373.68421052632 L351.42857142857 226.31578947368 L414.28571428571 285.26315789474 L477.14285714286 314.73684210526 L540 432.63157894737 L602.85714285714 580 L665.71428571429 550.52631578947 L728.57142857143 550.52631578947 L791.42857142857 491.57894736842 L854.28571428571 403.15789473684 L917.14285714286 432.63157894737 L980 462.10526315789 " stroke="rgb(230,106,124)" stroke-width="5" fill="transparent"></path><circle cx="100" cy="344.21052631579" r="8" fill="rgb(100,169,197)" stroke-width="10" stroke="transparent"></circle><circle cx="162.85714285714" cy="196.84210526316" r="8" fill="rgb(100,169,197)" stroke-width="10" stroke="transparent"></circle><circle cx="225.71428571429" cy="373.68421052632" r="8" fill="rgb(100,169,197)" stroke-width="10" stroke="transparent"></circle><circle cx="288.57142857143" cy="432.63157894737" r="8" fill="rgb(100,169,197)" stroke-width="10" stroke="transparent"></circle><circle cx="351.42857142857" cy="403.15789473684" r="8" fill="rgb(100,169,197)" stroke-width="10" stroke="transparent"></circle><circle cx="414.28571428571" cy="373.68421052632" r="8" fill="rgb(100,169,197)" stroke-width="10" stroke="transparent"></circle><circle cx="477.14285714286" cy="314.73684210526" r="8" fill="rgb(100,169,197)" stroke-width="10" stroke="transparent"></circle><circle cx="540" cy="344.21052631579" r="8" fill="rgb(100,169,197)" stroke-width="10" stroke="transparent"></circle><circle cx="602.85714285714" cy="403.15789473684" r="8" fill="rgb(100,169,197)" stroke-width="10" stroke="transparent"></circle><circle cx="665.71428571429" cy="373.68421052632" r="8" fill="rgb(100,169,197)" stroke-width="10" stroke="transparent"></circle><circle cx="728.57142857143" cy="373.68421052632" r="8" fill="rgb(100,169,197)" stroke-width="10" stroke="transparent"></circle><circle cx="791.42857142857" cy="344.21052631579" r="8" fill="rgb(100,169,197)" stroke-width="10" stroke="transparent"></circle><circle cx="854.28571428571" cy="255.78947368421" r="8" fill="rgb(100,169,197)" stroke-width="10" stroke="transparent"></circle><circle cx="917.14285714286" cy="20" r="8" fill="rgb(100,169,197)" stroke-width="10" stroke="transparent"></circle><circle cx="980" cy="78.947368421053" r="8" fill="rgb(100,169,197)" stroke-width="10" stroke="transparent"></circle><circle cx="100" cy="344.21052631579" r="8" fill="rgb(230,106,124)" stroke-width="10" stroke="transparent"></circle><circle cx="162.85714285714" cy="285.26315789474" r="8" fill="rgb(230,106,124)" stroke-width="10" stroke="transparent"></circle><circle cx="225.71428571429" cy="314.73684210526" r="8" fill="rgb(230,106,124)" stroke-width="10" stroke="transparent"></circle><circle cx="288.57142857143" cy="373.68421052632" r="8" fill="rgb(230,106,124)" stroke-width="10" stroke="transparent"></circle><circle cx="351.42857142857" cy="226.31578947368" r="8" fill="rgb(230,106,124)" stroke-width="10" stroke="transparent"></circle><circle cx="414.28571428571" cy="285.26315789474" r="8" fill="rgb(230,106,124)" stroke-width="10" stroke="transparent"></circle><circle cx="477.14285714286" cy="314.73684210526" r="8" fill="rgb(230,106,124)" stroke-width="10" stroke="transparent"></circle><circle cx="540" cy="432.63157894737" r="8" fill="rgb(230,106,124)" stroke-width="10" stroke="transparent"></circle><circle cx="602.85714285714" cy="580" r="8" fill="rgb(230,106,124)" stroke-width="10" stroke="transparent"></circle><circle cx="665.71428571429" cy="550.52631578947" r="8" fill="rgb(230,106,124)" stroke-width="10" stroke="transparent"></circle><circle cx="728.57142857143" cy="550.52631578947" r="8" fill="rgb(230,106,124)" stroke-width="10" stroke="transparent"></circle><circle cx="791.42857142857" cy="491.57894736842" r="8" fill="rgb(230,106,124)" stroke-width="10" stroke="transparent"></circle><circle cx="854.28571428571" cy="403.15789473684" r="8" fill="rgb(230,106,124)" stroke-width="10" stroke="transparent"></circle><circle cx="917.14285714286" cy="432.63157894737" r="8" fill="rgb(230,106,124)" stroke-width="10" stroke="transparent"></circle><circle cx="980" cy="462.10526315789" r="8" fill="rgb(230,106,124)" stroke-width="10" stroke="transparent"></circle><text x="10" y="538.94736842105">94.00</text><text x="10" y="477.89473684211">96.00</text><text x="10" y="416.84210526316">98.00</text><text x="10" y="355.78947368421">100.00</text><text x="10" y="294.73684210526">102.00</text><text x="10" y="233.68421052632">104.00</text><text x="10" y="172.63157894737">106.00</text><text x="10" y="111.57894736842">108.00</text><text x="10" y="50.526315789474">110.00</text><line x1="100" x2="980" y1="538.94736842105" y2="538.94736842105" stroke="rgba(0,0,0,0.1)" stroke-width="1">94</line><line x1="100" x2="980" y1="477.89473684211" y2="477.89473684211" stroke="rgba(0,0,0,0.1)" stroke-width="1">96</line><line x1="100" x2="980" y1="416.84210526316" y2="416.84210526316" stroke="rgba(0,0,0,0.1)" stroke-width="1">98</line><line x1="100" x2="980" y1="355.78947368421" y2="355.78947368421" stroke="rgba(0,0,0,0.1)" stroke-width="1">100</line><line x1="100" x2="980" y1="294.73684210526" y2="294.73684210526" stroke="rgba(0,0,0,0.1)" stroke-width="1">102</line><line x1="100" x2="980" y1="233.68421052632" y2="233.68421052632" stroke="rgba(0,0,0,0.1)" stroke-width="1">104</line><line x1="100" x2="980" y1="172.63157894737" y2="172.63157894737" stroke="rgba(0,0,0,0.1)" stroke-width="1">106</line><line x1="100" x2="980" y1="111.57894736842" y2="111.57894736842" stroke="rgba(0,0,0,0.1)" stroke-width="1">108</line><line x1="100" x2="980" y1="50.526315789474" y2="50.526315789474" stroke="rgba(0,0,0,0.1)" stroke-width="1">110</line></svg>
+</div>
+<h3>Step By Step</h3>
+<ol>
+  <li>Use your AJAX library of choice. jQuery would be fine in this case.</li>
+  <li>Make a POST request to <code>//lavancier.com/charts/api/v1</code> with a valid JSON string of data under the variable <code>chart</code> with at least an array of data. A CURL request in terminal may look like:
+    <pre><code class="bash">curl -v -H "Content-type: application/json" -X POST -d '{"chart": "data": [[100,105,99,97,98,99,101,100,98,99,99,100,103,111,109], [100,102,101,99,104,102,101,97,92,93,93,95,98,97,96]]}'  http://lavancier.com/charts/api/v1</code></pre>
+  </li>
+  <li>The response data should come in a JSON format with three attributes: <code>html</code>, <code>js</code>, and <code>css</code>.</li>
+  <li><code>html</code>: Append the HTML directly to the container.</li>
+  <li><code>js</code>: Iterate through each of the scripts, create a script tag, and add the script to the tag <code>innerHTML</code>. Then append each script to the <code>&lt;body&gt;</code>.</li>
+  <li><code>css</code>: Iterate through each of the stylesheets, create a <code>&lt;style&gt;</code> tag for each of the stylesheets and append them to the document head.</li>
+</ol>
+<h3>The Easy Way Out</h3>
+<ol>
+  <li>Use your AJAX library of choice. jQuery would be fine in this case.</li>
+  <li>Make a POST request to <code>//lavancier.com/charts/api/v1</code> with a valid JSON string of data under the variable <code>chart</code> with at least an array of data.</li>
+  <li>Take the result in the callback function and run it through the following function:</li>
+</ol>
+<pre><code class="javascript">
+// this is the function for appending the returned results to the &lt;body&gt;
+var parseAndAppend = function (response, container) {
+  // append SVG HTML to the container
+  $(container).html(response.html, true);
+
+  // for each script, append to the DOM
+  response.scripts.forEach(function (o) {
+    // create a script tag
+    var script = document.createElement("script");
+
+    script.innerHTML = o;
+
+    // append to the &lt;body&gt;
+    document.body.appendChild(script);
+  });
+
+  // for each stylesheet, append to the HEAD
+  response.css.forEach(function (o) {
+    // create a &lt;style&gt; tag
+    var style = document.createElement("style");
+    style.innerHTML = o;
+
+    // append to the &lt;head&gt;
+    document.head.appendChild(style);
+  });
+}
+
+$.ajax({
+  type: "POST",
+  url: "//lavancier.com/charts/api/v1",
+  data: {
+    chart: {
+      data: [
+        [100,105,99,97,98,99,101,100,98,99,99,100,103,111,109],
+        [100,102,101,99,104,102,101,97,92,93,93,95,98,97,96]
+      ]
+    }
+  },
+  callback: function (response) {
+    parseAndAppend(response, ".svg-container");
+  },
+  dataType: "json"
+});
+</code>
+</pre>
+<!-- create visual editor for charts -->

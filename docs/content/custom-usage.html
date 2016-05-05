@@ -1,0 +1,74 @@
+<h3>Styled Chart API Call</h3>
+<p>
+  This is a custom chart that has different padding, dimension, line styles, and more. The entire code to replicate is included below.
+</p>
+<pre><code class="javascript">
+$.ajax({
+  type: "POST",
+  url: "//lavancier.com/bcharts/api/v1",
+  data: {
+    chart: {
+      data: [
+        [100,105,99,97,98,99,101,100,98,99,99,100,103,111,109],
+        [100,102,101,99,104,102,101,97,92,93,93,95,98,97,96]
+      ],
+      settings: {
+        draw: {
+          axis: {
+            lines: false
+          }
+        },
+        axis: {
+          lineColor: "grey",
+          rounding: 0,
+          font: {
+            family: "Helvetica",
+            size: "10pt",
+            weight: 600
+          }
+        },
+        line: {
+          width: 3
+        },
+        circle: {
+          radius: 5
+        },
+        padding: {
+          top: 10,
+          left: 40,
+          right: 10,
+          bottom: 10
+        },
+        dimensions: {
+          width: 800,
+          height: 400
+        }
+      }
+    }
+  },
+  callback: function (response) {
+    // append SVG HTML to the container
+    $(".svg-container").html(response.html, true);
+
+    // for each script, append to the DOM
+    response.scripts.forEach(function (o) {
+      var script = document.createElement("script");
+      script.innerHTML = o;
+      document.body.appendChild(script);
+    });
+
+    // for each stylesheet, append to the HEAD
+    response.css.forEach(function (o) {
+      var style = document.createElement("style");
+      style.innerHTML = o;
+      document.head.appendChild(style);
+    });
+  },
+  dataType: "json"
+});
+</code>
+</pre>
+<h3>Output</h3>
+<div class="svg-container">
+  <svg viewBox="0 0 800 400" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M40 230 L40 230 L93.571428571429 130 L147.14285714286 250 L200.71428571429 290 L254.28571428571 270 L307.85714285714 250 L361.42857142857 210 L415 230 L468.57142857143 270 L522.14285714286 250 L575.71428571429 250 L629.28571428571 230 L682.85714285714 170 L736.42857142857 10 L790 50 L790 390 L40 390 Z" stroke="transparent" stroke-width="0" fill="rgba(100,169,197,0.2)"></path><path d="M40 230 L40 230 L93.571428571429 190 L147.14285714286 210 L200.71428571429 250 L254.28571428571 150 L307.85714285714 190 L361.42857142857 210 L415 290 L468.57142857143 390 L522.14285714286 370 L575.71428571429 370 L629.28571428571 330 L682.85714285714 270 L736.42857142857 290 L790 310 L790 390 L40 390 Z" stroke="transparent" stroke-width="0" fill="rgba(230,106,124,0.2)"></path><path d="M40 230 L93.571428571429 130 L147.14285714286 250 L200.71428571429 290 L254.28571428571 270 L307.85714285714 250 L361.42857142857 210 L415 230 L468.57142857143 270 L522.14285714286 250 L575.71428571429 250 L629.28571428571 230 L682.85714285714 170 L736.42857142857 10 L790 50 " stroke="rgba(100,169,197,1)" stroke-width="3" fill="transparent"></path><path d="M40 230 L93.571428571429 190 L147.14285714286 210 L200.71428571429 250 L254.28571428571 150 L307.85714285714 190 L361.42857142857 210 L415 290 L468.57142857143 390 L522.14285714286 370 L575.71428571429 370 L629.28571428571 330 L682.85714285714 270 L736.42857142857 290 L790 310 " stroke="rgba(230,106,124,1)" stroke-width="3" fill="transparent"></path><circle cx="40" cy="230" r="5" fill="rgba(100,169,197,1)" stroke-width="5" stroke="transparent"></circle><circle cx="93.571428571429" cy="130" r="5" fill="rgba(100,169,197,1)" stroke-width="5" stroke="transparent"></circle><circle cx="147.14285714286" cy="250" r="5" fill="rgba(100,169,197,1)" stroke-width="5" stroke="transparent"></circle><circle cx="200.71428571429" cy="290" r="5" fill="rgba(100,169,197,1)" stroke-width="5" stroke="transparent"></circle><circle cx="254.28571428571" cy="270" r="5" fill="rgba(100,169,197,1)" stroke-width="5" stroke="transparent"></circle><circle cx="307.85714285714" cy="250" r="5" fill="rgba(100,169,197,1)" stroke-width="5" stroke="transparent"></circle><circle cx="361.42857142857" cy="210" r="5" fill="rgba(100,169,197,1)" stroke-width="5" stroke="transparent"></circle><circle cx="415" cy="230" r="5" fill="rgba(100,169,197,1)" stroke-width="5" stroke="transparent"></circle><circle cx="468.57142857143" cy="270" r="5" fill="rgba(100,169,197,1)" stroke-width="5" stroke="transparent"></circle><circle cx="522.14285714286" cy="250" r="5" fill="rgba(100,169,197,1)" stroke-width="5" stroke="transparent"></circle><circle cx="575.71428571429" cy="250" r="5" fill="rgba(100,169,197,1)" stroke-width="5" stroke="transparent"></circle><circle cx="629.28571428571" cy="230" r="5" fill="rgba(100,169,197,1)" stroke-width="5" stroke="transparent"></circle><circle cx="682.85714285714" cy="170" r="5" fill="rgba(100,169,197,1)" stroke-width="5" stroke="transparent"></circle><circle cx="736.42857142857" cy="10" r="5" fill="rgba(100,169,197,1)" stroke-width="5" stroke="transparent"></circle><circle cx="790" cy="50" r="5" fill="rgba(100,169,197,1)" stroke-width="5" stroke="transparent"></circle><circle cx="40" cy="230" r="5" fill="rgba(230,106,124,1)" stroke-width="5" stroke="transparent"></circle><circle cx="93.571428571429" cy="190" r="5" fill="rgba(230,106,124,1)" stroke-width="5" stroke="transparent"></circle><circle cx="147.14285714286" cy="210" r="5" fill="rgba(230,106,124,1)" stroke-width="5" stroke="transparent"></circle><circle cx="200.71428571429" cy="250" r="5" fill="rgba(230,106,124,1)" stroke-width="5" stroke="transparent"></circle><circle cx="254.28571428571" cy="150" r="5" fill="rgba(230,106,124,1)" stroke-width="5" stroke="transparent"></circle><circle cx="307.85714285714" cy="190" r="5" fill="rgba(230,106,124,1)" stroke-width="5" stroke="transparent"></circle><circle cx="361.42857142857" cy="210" r="5" fill="rgba(230,106,124,1)" stroke-width="5" stroke="transparent"></circle><circle cx="415" cy="290" r="5" fill="rgba(230,106,124,1)" stroke-width="5" stroke="transparent"></circle><circle cx="468.57142857143" cy="390" r="5" fill="rgba(230,106,124,1)" stroke-width="5" stroke="transparent"></circle><circle cx="522.14285714286" cy="370" r="5" fill="rgba(230,106,124,1)" stroke-width="5" stroke="transparent"></circle><circle cx="575.71428571429" cy="370" r="5" fill="rgba(230,106,124,1)" stroke-width="5" stroke="transparent"></circle><circle cx="629.28571428571" cy="330" r="5" fill="rgba(230,106,124,1)" stroke-width="5" stroke="transparent"></circle><circle cx="682.85714285714" cy="270" r="5" fill="rgba(230,106,124,1)" stroke-width="5" stroke="transparent"></circle><circle cx="736.42857142857" cy="290" r="5" fill="rgba(230,106,124,1)" stroke-width="5" stroke="transparent"></circle><circle cx="790" cy="310" r="5" fill="rgba(230,106,124,1)" stroke-width="5" stroke="transparent"></circle><text x="10" y="338.94736842105" font-family="Helvetica" font-weight="600" font-size="10pt">94</text><text x="10" y="277.89473684211" font-family="Helvetica" font-weight="600" font-size="10pt">96</text><text x="10" y="216.84210526316" font-family="Helvetica" font-weight="600" font-size="10pt">98</text><text x="10" y="155.78947368421" font-family="Helvetica" font-weight="600" font-size="10pt">100</text><text x="10" y="94.736842105263" font-family="Helvetica" font-weight="600" font-size="10pt">102</text><text x="10" y="33.684210526316" font-family="Helvetica" font-weight="600" font-size="10pt">104</text></svg>
+</div>

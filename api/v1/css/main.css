@@ -1,0 +1,32 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900);
+
+svg {
+  font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+svg line {
+  transition: all 0.2s ease;
+}
+
+svg circle:hover {
+  fill: red;
+}
+
+#bcharts-data-box {
+  font-size: 0.8rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 5px;
+  border-radius: 2px;
+  background-color: #EEE;
+  border: 1px solid #DDD;
+
+  transition: all 0.1s ease;
+
+  display: none;
+}
+
+.bcharts-display {
+  display: block !important;
+}

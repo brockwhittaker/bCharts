@@ -1,7 +1,6 @@
 <?php
 header('Access-Control-Allow-Origin: *');
 
-
 require("draw-chart.php");
 
 
@@ -18,29 +17,34 @@ $internal = array(
     "lines" => true,
     "circles" => true,
     "axis" => array(
-      "ticks" => true,
-      "lines" => true,
-      "lineColor" => "rgb(0,0,0,0.2)"
+      "y" => true,
+      "lines" => true
+    )
+  ),
+  "axis" => array(
+    "lineColor" => "rgba(0,0,0,0.2)",
+    "rounding" => 2,
+    "font" => array(
+      "family" => "inherit",
+      "weight" => "inherit",
+      "size" => "12pt"
     )
   ),
   "line" => array(
-    "fill" => array(array(100,169,197), array(230,106,124), array(151,110,201), array(169,201,110), array(230,176,99))
+    "color" => array(array(100,169,197), array(230,106,124), array(151,110,201), array(169,201,110), array(230,176,99)),
+    "width" => 5
   ),
   "area" => array(
-    "fill" => array(array(100,169,197), array(230,106,124), array(151,110,201), array(169,201,110), array(230,176,99)),
+    "fill" => array("transparent"),
   ),
-  "lineWidth" => 1,
-  "circleRadius" => 2,
-  "font" => array(
-    "family" => "Lato",
-    "weight" => 300,
-    "size" => "12pt"
+  "circle" => array(
+    "radius" => 8
   ),
   "padding" => array(
-    "left" => 50,
-    "top" => 10,
-    "bottom" => 10,
-    "right" => 10
+    "left" => 100,
+    "top" => 20,
+    "bottom" => 20,
+    "right" => 20
   ),
   "dimensions" => array(
     "width" => 1000,
@@ -54,6 +58,8 @@ $POST = json_decode($_POST["chart"], true);
 
 $settings = (isset($POST["settings"])) ? $POST["settings"] : array();
 $settings = array_replace_recursive($internal, $settings);
+
+//print_r($settings["dimensions"]);
 
 $DIM = $settings["dimensions"];
 $PADDING = $settings["padding"];

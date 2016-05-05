@@ -13,7 +13,7 @@ function onLeave () {
 
 $("svg circle").on("mouseenter", function (e) {
   var $container = $("#bcharts-data-box");
-  var value = (600 - $(this).attr("cy")) / 600 * {{RANGE}} + {{MIN}};
+  var value = ({{ADJ_HEIGHT}} - $(this).attr("cy") + {{PADDING_TOP}}) / {{ADJ_HEIGHT}} * {{RANGE}} + {{MIN}};
 
   $("#bcharts-data-box")
     .attr("data-hover", true)
@@ -21,14 +21,17 @@ $("svg circle").on("mouseenter", function (e) {
 
   $(this).attr("r", $(this).attr("r") * 1.5);
 
+  var coords = e.target.getBoundingClientRect();
+
   $container
     .addClass("bcharts-display")
-    .css({
-      left: (e.layerX - $container.width() / 2) + "px",
-      top: (e.layerY - $container.height() - 10) + "px"
-    })
     .attr("data-display", $.time("U"))
     .html("y: " + value.toFixed(2));
+  $container.css({
+    position: "fixed",
+    left: (coords.left - $container.width() / 2 + 15) + "px",
+    top: (coords.top - 35) + "px"
+  });
 });
 
 $("svg circle").on("mouseleave", function () {

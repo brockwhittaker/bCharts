@@ -1,0 +1,25 @@
+<h2>Setting Y-Axis Line Color</h2>
+<p>
+  The y-axis line color can be changed to a custom color the <code>settings.axis.lineColor</code> attribute.
+</p>
+<p>
+  The default value for the line color is <code>rgba(20,20,20,0.2)</code>.
+</p>
+<h3>A Small Example</h3>
+<pre><code class="javascript">
+chart: {
+  data: [[200,400,500,600,400,400,300],[500,300,200,200,300,400,500]],
+  settings: {
+    draw: {
+      axis: {
+        lineColor: "rgb(38, 193, 160)"
+      }
+    }
+  }
+}
+</code>
+</pre>
+<h3>Output</h3>
+<div class="svg-container">
+<svg width="1000" height="600" viewBox="0 0 1000 600" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M100 580 L100 580 L246.66666666667 300 L393.33333333333 160 L540 20 L686.66666666667 300 L833.33333333333 300 L980 440 L980 580 L100 580 Z" stroke="transparent" stroke-width="0" fill="rgba(100,169,197,0.2)"></path><path d="M100 160 L100 160 L246.66666666667 440 L393.33333333333 580 L540 580 L686.66666666667 440 L833.33333333333 300 L980 160 L980 580 L100 580 Z" stroke="transparent" stroke-width="0" fill="rgba(230,106,124,0.2)"></path><path d="M100 580 L246.66666666667 300 L393.33333333333 160 L540 20 L686.66666666667 300 L833.33333333333 300 L980 440 " stroke="rgba(100,169,197,1)" stroke-width="5" fill="transparent"></path><path d="M100 160 L246.66666666667 440 L393.33333333333 580 L540 580 L686.66666666667 440 L833.33333333333 300 L980 160 " stroke="rgba(230,106,124,1)" stroke-width="5" fill="transparent"></path><circle cx="100" cy="580" r="8" fill="rgba(100,169,197,1)" stroke-width="8" stroke="transparent"></circle><circle cx="246.66666666667" cy="300" r="8" fill="rgba(100,169,197,1)" stroke-width="8" stroke="transparent"></circle><circle cx="393.33333333333" cy="160" r="8" fill="rgba(100,169,197,1)" stroke-width="8" stroke="transparent"></circle><circle cx="540" cy="20" r="8" fill="rgba(100,169,197,1)" stroke-width="8" stroke="transparent" data-display="1460871196722"></circle><circle cx="686.66666666667" cy="300" r="8" fill="rgba(100,169,197,1)" stroke-width="8" stroke="transparent"></circle><circle cx="833.33333333333" cy="300" r="8" fill="rgba(100,169,197,1)" stroke-width="8" stroke="transparent"></circle><circle cx="980" cy="440" r="8" fill="rgba(100,169,197,1)" stroke-width="8" stroke="transparent"></circle><circle cx="100" cy="160" r="8" fill="rgba(230,106,124,1)" stroke-width="8" stroke="transparent"></circle><circle cx="246.66666666667" cy="440" r="8" fill="rgba(230,106,124,1)" stroke-width="8" stroke="transparent"></circle><circle cx="393.33333333333" cy="580" r="8" fill="rgba(230,106,124,1)" stroke-width="8" stroke="transparent"></circle><circle cx="540" cy="580" r="8" fill="rgba(230,106,124,1)" stroke-width="8" stroke="transparent"></circle><circle cx="686.66666666667" cy="440" r="8" fill="rgba(230,106,124,1)" stroke-width="8" stroke="transparent"></circle><circle cx="833.33333333333" cy="300" r="8" fill="rgba(230,106,124,1)" stroke-width="8" stroke="transparent"></circle><circle cx="980" cy="160" r="8" fill="rgba(230,106,124,1)" stroke-width="8" stroke="transparent"></circle><line x1="100" x2="980" y1="527.5" y2="527.5" stroke="rgb(38, 193, 160)" stroke-width="1">250</line><line x1="100" x2="980" y1="455" y2="455" stroke="rgb(38, 193, 160)" stroke-width="1">300</line><line x1="100" x2="980" y1="382.5" y2="382.5" stroke="rgb(38, 193, 160)" stroke-width="1">350</line><line x1="100" x2="980" y1="310" y2="310" stroke="rgb(38, 193, 160)" stroke-width="1">400</line><line x1="100" x2="980" y1="237.5" y2="237.5" stroke="rgb(38, 193, 160)" stroke-width="1">450</line><line x1="100" x2="980" y1="165" y2="165" stroke="rgb(38, 193, 160)" stroke-width="1">500</line><line x1="100" x2="980" y1="92.5" y2="92.5" stroke="rgb(38, 193, 160)" stroke-width="1">550</line><text x="10" y="527.5">250.00</text><text x="10" y="455">300.00</text><text x="10" y="382.5">350.00</text><text x="10" y="310">400.00</text><text x="10" y="237.5">450.00</text><text x="10" y="165">500.00</text><text x="10" y="92.5">550.00</text></svg>
+</div>

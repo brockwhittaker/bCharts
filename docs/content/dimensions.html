@@ -1,0 +1,31 @@
+<h2>Setting Chart Dimensions</h2>
+<p>
+  The dimensions of the chart can bet set with two different attributes: <code>settings.dimensions.width</code>, and <code>settings.dimensions.height</code>.
+</p>
+<p>
+  The default values for padding are as follows:
+</p>
+<ol>
+  <li><code>width</code>: 1000</li>
+  <li><code>height</code>: 600</li>
+</ol>
+<p>
+  Keep in mind however that these values can scale proportionally to any resolution.
+</p>
+<h3>A Small Example</h3>
+<pre><code class="javascript">
+chart: {
+  data: [[200,400,500,600,400,400,300],[500,300,200,200,300,400,500]],
+  settings: {
+    dimensions: {
+      width: 800
+      height: 800
+    }
+  }
+}
+</code>
+</pre>
+<h3>Output</h3>
+<div class="svg-container" style="width: 800px; height: 800px">
+  <svg viewBox="0 0 800 800" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M100 780 L100 780 L213.33333333333 400 L326.66666666667 210 L440 20 L553.33333333333 400 L666.66666666667 400 L780 590 L780 780 L100 780 Z" stroke="transparent" stroke-width="0" fill="rgba(100,169,197,0.2)"></path><path d="M100 210 L100 210 L213.33333333333 590 L326.66666666667 780 L440 780 L553.33333333333 590 L666.66666666667 400 L780 210 L780 780 L100 780 Z" stroke="transparent" stroke-width="0" fill="rgba(230,106,124,0.2)"></path><path d="M100 780 L213.33333333333 400 L326.66666666667 210 L440 20 L553.33333333333 400 L666.66666666667 400 L780 590 " stroke="rgba(100,169,197,1)" stroke-width="5" fill="transparent"></path><path d="M100 210 L213.33333333333 590 L326.66666666667 780 L440 780 L553.33333333333 590 L666.66666666667 400 L780 210 " stroke="rgba(230,106,124,1)" stroke-width="5" fill="transparent"></path><circle cx="100" cy="780" r="8" fill="rgba(100,169,197,1)" stroke-width="8" stroke="transparent"></circle><circle cx="213.33333333333" cy="400" r="8" fill="rgba(100,169,197,1)" stroke-width="8" stroke="transparent"></circle><circle cx="326.66666666667" cy="210" r="8" fill="rgba(100,169,197,1)" stroke-width="8" stroke="transparent"></circle><circle cx="440" cy="20" r="8" fill="rgba(100,169,197,1)" stroke-width="8" stroke="transparent"></circle><circle cx="553.33333333333" cy="400" r="8" fill="rgba(100,169,197,1)" stroke-width="8" stroke="transparent"></circle><circle cx="666.66666666667" cy="400" r="8" fill="rgba(100,169,197,1)" stroke-width="8" stroke="transparent"></circle><circle cx="780" cy="590" r="8" fill="rgba(100,169,197,1)" stroke-width="8" stroke="transparent"></circle><circle cx="100" cy="210" r="8" fill="rgba(230,106,124,1)" stroke-width="8" stroke="transparent"></circle><circle cx="213.33333333333" cy="590" r="8" fill="rgba(230,106,124,1)" stroke-width="8" stroke="transparent"></circle><circle cx="326.66666666667" cy="780" r="8" fill="rgba(230,106,124,1)" stroke-width="8" stroke="transparent"></circle><circle cx="440" cy="780" r="8" fill="rgba(230,106,124,1)" stroke-width="8" stroke="transparent"></circle><circle cx="553.33333333333" cy="590" r="8" fill="rgba(230,106,124,1)" stroke-width="8" stroke="transparent"></circle><circle cx="666.66666666667" cy="400" r="8" fill="rgba(230,106,124,1)" stroke-width="8" stroke="transparent"></circle><circle cx="780" cy="210" r="8" fill="rgba(230,106,124,1)" stroke-width="8" stroke="transparent"></circle><text x="10" y="727.5" font-family="Helvetica" font-weight="inherit" font-size="12pt">250.00</text><text x="10" y="655" font-family="Helvetica" font-weight="inherit" font-size="12pt">300.00</text><text x="10" y="582.5" font-family="Helvetica" font-weight="inherit" font-size="12pt">350.00</text><text x="10" y="510" font-family="Helvetica" font-weight="inherit" font-size="12pt">400.00</text><text x="10" y="437.5" font-family="Helvetica" font-weight="inherit" font-size="12pt">450.00</text><text x="10" y="365" font-family="Helvetica" font-weight="inherit" font-size="12pt">500.00</text><text x="10" y="292.5" font-family="Helvetica" font-weight="inherit" font-size="12pt">550.00</text><text x="10" y="220" font-family="Helvetica" font-weight="inherit" font-size="12pt">600.00</text><line x1="100" x2="780" y1="727.5" y2="727.5" stroke="rgba(0,0,0,0.2)" stroke-width="1">250</line><line x1="100" x2="780" y1="655" y2="655" stroke="rgba(0,0,0,0.2)" stroke-width="1">300</line><line x1="100" x2="780" y1="582.5" y2="582.5" stroke="rgba(0,0,0,0.2)" stroke-width="1">350</line><line x1="100" x2="780" y1="510" y2="510" stroke="rgba(0,0,0,0.2)" stroke-width="1">400</line><line x1="100" x2="780" y1="437.5" y2="437.5" stroke="rgba(0,0,0,0.2)" stroke-width="1">450</line><line x1="100" x2="780" y1="365" y2="365" stroke="rgba(0,0,0,0.2)" stroke-width="1">500</line><line x1="100" x2="780" y1="292.5" y2="292.5" stroke="rgba(0,0,0,0.2)" stroke-width="1">550</line><line x1="100" x2="780" y1="220" y2="220" stroke="rgba(0,0,0,0.2)" stroke-width="1">600</line></svg>
+</div>

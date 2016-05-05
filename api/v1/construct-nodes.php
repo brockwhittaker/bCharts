@@ -73,15 +73,20 @@ class SVGRender Extends NodeConstructor {
     return $this->buildNode();
   }
 
-  public function text($x, $y, $font_family, $font_weight, $font_size) {
+  public function text($html, $x, $y, $font_family = false, $font_weight = false, $font_size = false) {
     $this->setTagName("text");
+
+    $this->setHTML($html);
 
     $this->setProperty("x", $x);
     $this->setProperty("y", $y);
 
-    $this->setProperty("font-family", $font_family);
-    $this->setProperty("font-weight", $font_weight);
-    $this->setProperty("font-size", $font_size);
+    if ($font_family) {
+      $this->setProperty("font-family", $font_family);
+      $this->setProperty("font-weight", $font_weight);
+      $this->setProperty("font-size", $font_size);
+      $this->setProperty("dominant-baseline", "middle");
+    }
 
     return $this->buildNode();
   }

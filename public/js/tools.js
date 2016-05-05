@@ -231,8 +231,12 @@ var _ = (function brockEvents () {
         ----- **/
       },
 
-      click: function () {
-        INTERNAL.first().click();
+      click: function (callback) {
+        if (typeof callback == "function") {
+          this.on("click", callback);
+        } else {
+          INTERNAL.first().click();
+        }
 
         return this;
       },
@@ -273,7 +277,6 @@ var _ = (function brockEvents () {
           });
 
         } else if (typeof attr === "string") {
-          console.log(INTERNAL.first());
           return INTERNAL.first().style[attr];
         }
 
@@ -289,20 +292,15 @@ var _ = (function brockEvents () {
       },
 
       data: function (attr, value) {
-        if (typeof value === "undefined" || value === null) {
+        if (typeof value === "undefined") {
           /** if the value @param doesn't exist, then assume it is a query to
              retrieve the value of an attribute. **/
 
-          return INTERNAL.first().dataset.attr;
+          return INTERNAL.first().dataset[attr];
           /** return the value of the given attribute for the first node. **/
 
         } else {
-          INTERNAL.loop(function (i) {
-            /** loop through all selector nodes. **/
-
-            i.dataset[attr] = value;
-            /** set the value for tha attribute for each node. **/
-          });
+          INTERNAL.first().dataset[attr] = value;
         }
 
         return this;
@@ -310,7 +308,7 @@ var _ = (function brockEvents () {
         /** -----
         @param : attr - the selected attribute to either query or set.
                  value - [optional] when setting the value of an attribute.
-        @use   : single element for query, multiple elements for command.
+        @use   : single element for query and command.
         @desc  : Set attribute with value for list of nodes or query the first
                  node's attribute value.
         ----- **/
@@ -392,6 +390,16 @@ var _ = (function brockEvents () {
         var classes = INTERNAL.first().className.split(/ /g);
 
         return (classes.indexOf(className) !== -1);
+      },
+
+      height: function (val) {
+        if (typeof val === "undefined" || val === null) {
+          return INTERNAL.first().clientHeight;
+        } else {
+          INTERNAL.first().style.height = val;
+        }
+
+        return this;
       },
 
       html: function (html, append) {
@@ -554,6 +562,16 @@ var _ = (function brockEvents () {
         ----- **/
       },
 
+      toggleClass: function (className) {
+        if (this.hasClass(className)) {
+          this.removeClass(className);
+        } else {
+          this.addClass(className);
+        }
+
+        return this;
+      },
+
       val: function (value) {
         if (typeof value !== "string") {
           /** if the value @param is empty, then return the contents of the elem
@@ -580,9 +598,15 @@ var _ = (function brockEvents () {
         ----- **/
       },
 
-      width: function () {
-        return INTERNAL.first().clientWidth;
-      }
+      width: function (val) {
+        if (typeof val === "undefined" || val === null) {
+          return INTERNAL.first().clientWidth;
+        } else {
+          INTERNAL.first().style.width = val;
+        }
+
+        return this;
+      },
     };
     /** this is a list of all functions that the selectors can access. **/
 

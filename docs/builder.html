@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="vendor/highlighting.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="css/main.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="css/builder.css" media="screen" title="no title" charset="utf-8">
+  </head>
+  <body>
+    <div id="settings_container">
+      <div class="col">
+        <div class="ind-input">
+          <label class="checkbox-label" for="plot_lines">Enable Plot Lines</label>
+          <div id="plot_lines" class="checkbox checked" data-checked="true"></div>
+          <div class="clear"></div>
+        </div>
+        <div class="ind-input">
+          <label class="checkbox-label" for="plot_points">Enable Plot Points</label>
+          <div id="plot_points" class="checkbox checked" data-checked="true"></div>
+          <div class="clear"></div>
+        </div>
+
+        <br>
+
+        <div class="ind-input">
+          <label class="checkbox-label" for="y_axis">Enable Y-Axis</label>
+          <div id="y_axis" class="checkbox checked" data-checked="true"></div>
+          <div class="clear"></div>
+        </div>
+        <div class="ind-input">
+          <label class="checkbox-label" for="y_axis_lines">Enable Y-Axis Lines</label>
+          <div id="y_axis_lines" class="checkbox checked" data-checked="true"></div>
+          <div class="clear"></div>
+        </div>
+
+        <br>
+
+        <div class="ind-input">
+          <label class="checkbox-label" for="axis_line_color">Axis Line Color</label>
+          <input type="text" placeholder="Area Color" id="axis_line_color" value="rgba(20,20,20,0.1)" />
+          <div class="clear"></div>
+        </div>
+
+        <div class="ind-input">
+          <label class="checkbox-label" for="axis_rounding">Axis Rounding <span class="light">(Number of Places)</span></label>
+          <input type="text" placeholder="Area Color" id="axis_rounding" value="2" />
+          <div class="clear"></div>
+        </div>
+
+        <br>
+
+        <div class="ind-input">
+          <label class="checkbox-label" for="axis_font_family">Axis Font Familiy</label>
+          <input type="text" placeholder="Area Color" id="axis_font_family" value="Roboto" />
+          <div class="clear"></div>
+        </div>
+
+        <div class="ind-input">
+          <label class="checkbox-label" for="axis_font_size">Axis Font Size</label>
+          <input type="text" placeholder="Area Color" id="axis_font_size" value="12pt" />
+          <div class="clear"></div>
+        </div>
+
+        <div class="ind-input">
+          <label class="checkbox-label" for="axis_font_weight">Axis Font Weight</label>
+          <input type="text" placeholder="Area Color" id="axis_font_weight" value="300" />
+          <div class="clear"></div>
+        </div>
+
+        <br>
+
+        <div class="ind-input">
+          <label class="checkbox-label" for="chart_width">Chart Width</label>
+          <input type="text" placeholder="Area Color" id="chart_width" value="1000" />
+          <div class="clear"></div>
+        </div>
+
+        <div class="ind-input">
+          <label class="checkbox-label" for="chart_height">Chart Height</label>
+          <input type="text" placeholder="Area Color" id="chart_height" value="600" />
+          <div class="clear"></div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="ind-input">
+          <label class="checkbox-label" for="padding_top">Padding Top</label>
+          <input type="text" placeholder="Area Color" id="padding_top" value="20" />
+          <div class="clear"></div>
+        </div>
+
+        <div class="ind-input">
+          <label class="checkbox-label" for="padding_bottom">Padding Bottom</label>
+          <input type="text" placeholder="Area Color" id="padding_bottom" value="20" />
+          <div class="clear"></div>
+        </div>
+
+        <div class="ind-input">
+          <label class="checkbox-label" for="padding_left">Padding Left</label>
+          <input type="text" placeholder="Area Color" id="padding_left" value="80" />
+          <div class="clear"></div>
+        </div>
+
+        <div class="ind-input">
+          <label class="checkbox-label" for="padding_right">Padding Right</label>
+          <input type="text" placeholder="Area Color" id="padding_right" value="20" />
+          <div class="clear"></div>
+        </div>
+
+        <br>
+
+        <div class="ind-input">
+          <label class="checkbox-label" for="area_colors">Area Colors <span class="light">(Seperate by Commas)</span></label>
+          <input type="text" placeholder="Area Color" id="area_colors" value="transparent" />
+          <div class="clear"></div>
+        </div>
+
+        <br>
+
+        <div class="ind-input">
+          <label class="checkbox-label" for="point_radius">Point Radius</label>
+          <input type="text" placeholder="Area Color" id="point_radius" value="5" />
+          <div class="clear"></div>
+        </div>
+
+        <br>
+
+        <div class="ind-input">
+          <label class="checkbox-label" for="line_color">Line Color</label>
+          <input type="text" placeholder="Area Color" id="line_color" value="" />
+          <div class="clear"></div>
+        </div>
+
+        <div class="ind-input">
+          <label class="checkbox-label" for="line_width">Line Width</label>
+          <input type="text" placeholder="Area Color" id="line_width" value="3" />
+          <div class="clear"></div>
+        </div>
+
+        <br>
+
+        <div class="ind-input">
+          <label class="checkbox-label" for="line_color">Data <span class="light">(In Array Format)</span></label>
+          <textarea type="text" placeholder="Area Color" id="data">[100,105,99,97,98,99,101,100,98,99,99,100,103,111,109],[100,102,101,99,104,102,101,97,92,93,93,95,98,97,96]</textarea>
+          <div class="clear"></div>
+        </div>
+      </div>
+      <button id="generate_button">Submit</button>
+    </div>
+
+    <div class="container"></div>
+    <br>
+    <div id="get_code"><span class="code-symbol">&lt;/&gt;</span> Get Code</div>
+
+    <div id="code_container">
+      <div id="exit">x</div>
+      <h1>Your code below:</h1>
+      <h3>No code yet.</h3>
+      <pre><code class="javascript" id="code">
+      </code></pre>
+    </div>
+  </body>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script>
+  <script src="../public/js/tools.js" charset="utf-8"></script>
+  <script src="js/builder.js" charset="utf-8"></script>
+</html>

@@ -1,0 +1,18 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:400,100,300,400italic,700,300italic);
+
+body {
+  font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  height: 100vh;
+  max-width: 100vw;
+
+  text-align: center;
+}
+
+.container {
+  position: relative;
+  display: inline-block;
+  margin: 20vh auto;
+
+  border: 1px solid #CCC;
+}

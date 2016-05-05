@@ -1,0 +1,32 @@
+<h2>Setting Chart Padding</h2>
+<p>
+  The padding of the chart can bet set with four different attributes: <code>settings.padding.top</code>, <code>settings.padding.bottom</code>, <code>settings.padding.left</code>, and <code>settings.padding.right</code>.
+</p>
+<p>
+  The default values for padding are as follows:
+</p>
+<ol>
+  <li><code>top</code>: 20</li>
+  <li><code>bottom</code>: 20</li>
+  <li><code>left</code>: 100</li>
+  <li><code>right</code>: 20</li>
+</ol>
+<h3>A Small Example</h3>
+<pre><code class="javascript">
+chart: {
+  data: [[200,400,500,600,400,400,300],[500,300,200,200,300,400,500]],
+  settings: {
+    padding: {
+      left: 200,
+      right: 200,
+      top: 100,
+      bottom: 100
+    }
+  }
+}
+</code>
+</pre>
+<h3>Output</h3>
+<div class="svg-container">
+  <svg viewBox="0 0 1000 600" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M200 500 L200 500 L300 300 L400 200 L500 100 L600 300 L700 300 L800 400 L800 500 L200 500 Z" stroke="transparent" stroke-width="0" fill="rgba(100,169,197,0.2)"></path><path d="M200 200 L200 200 L300 400 L400 500 L500 500 L600 400 L700 300 L800 200 L800 500 L200 500 Z" stroke="transparent" stroke-width="0" fill="rgba(230,106,124,0.2)"></path><path d="M200 500 L300 300 L400 200 L500 100 L600 300 L700 300 L800 400 " stroke="rgba(100,169,197,1)" stroke-width="5" fill="transparent"></path><path d="M200 200 L300 400 L400 500 L500 500 L600 400 L700 300 L800 200 " stroke="rgba(230,106,124,1)" stroke-width="5" fill="transparent"></path><circle cx="200" cy="500" r="8" fill="rgba(100,169,197,1)" stroke-width="8" stroke="transparent"></circle><circle cx="300" cy="300" r="8" fill="rgba(100,169,197,1)" stroke-width="8" stroke="transparent"></circle><circle cx="400" cy="200" r="8" fill="rgba(100,169,197,1)" stroke-width="8" stroke="transparent"></circle><circle cx="500" cy="100" r="8" fill="rgba(100,169,197,1)" stroke-width="8" stroke="transparent"></circle><circle cx="600" cy="300" r="8" fill="rgba(100,169,197,1)" stroke-width="8" stroke="transparent"></circle><circle cx="700" cy="300" r="8" fill="rgba(100,169,197,1)" stroke-width="8" stroke="transparent"></circle><circle cx="800" cy="400" r="8" fill="rgba(100,169,197,1)" stroke-width="8" stroke="transparent"></circle><circle cx="200" cy="200" r="8" fill="rgba(230,106,124,1)" stroke-width="8" stroke="transparent"></circle><circle cx="300" cy="400" r="8" fill="rgba(230,106,124,1)" stroke-width="8" stroke="transparent"></circle><circle cx="400" cy="500" r="8" fill="rgba(230,106,124,1)" stroke-width="8" stroke="transparent"></circle><circle cx="500" cy="500" r="8" fill="rgba(230,106,124,1)" stroke-width="8" stroke="transparent"></circle><circle cx="600" cy="400" r="8" fill="rgba(230,106,124,1)" stroke-width="8" stroke="transparent"></circle><circle cx="700" cy="300" r="8" fill="rgba(230,106,124,1)" stroke-width="8" stroke="transparent"></circle><circle cx="800" cy="200" r="8" fill="rgba(230,106,124,1)" stroke-width="8" stroke="transparent"></circle><text x="10" y="455" font-family="Helvetica" font-weight="inherit" font-size="12pt">300.00</text><text x="10" y="382.5" font-family="Helvetica" font-weight="inherit" font-size="12pt">350.00</text><text x="10" y="310" font-family="Helvetica" font-weight="inherit" font-size="12pt">400.00</text><text x="10" y="237.5" font-family="Helvetica" font-weight="inherit" font-size="12pt">450.00</text><text x="10" y="165" font-family="Helvetica" font-weight="inherit" font-size="12pt">500.00</text><line x1="200" x2="800" y1="455" y2="455" stroke="rgba(0,0,0,0.2)" stroke-width="1">300</line><line x1="200" x2="800" y1="382.5" y2="382.5" stroke="rgba(0,0,0,0.2)" stroke-width="1">350</line><line x1="200" x2="800" y1="310" y2="310" stroke="rgba(0,0,0,0.2)" stroke-width="1">400</line><line x1="200" x2="800" y1="237.5" y2="237.5" stroke="rgba(0,0,0,0.2)" stroke-width="1">450</line><line x1="200" x2="800" y1="165" y2="165" stroke="rgba(0,0,0,0.2)" stroke-width="1">500</line></svg>
+</div>

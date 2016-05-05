@@ -23,22 +23,19 @@ class Chart Extends ProcessData {
     $this->adjusted_height = $settings["dimensions"]["height"] - ($settings["padding"]["top"] + $settings["padding"]["bottom"]);
 
 
-    $this->relativeArrays($this->width / $this->height, TRUE);
+    $this->relativeArrays(TRUE);
   }
 
-  private function __lineColor ($index, $transparency = false) {
-    $COLORS = $this->settings["line"]["fill"];
+  private function __lineColor ($index, $opacity = 1) {
+    $COLORS = $this->settings["line"]["color"];
     $AREA_COLORS = $this->settings["area"]["fill"];
 
-    if ($transparency == false) {
-      return "rgb(" . implode(",", $COLORS[$index % count($COLORS)]) . ")";
+    $color = $COLORS[$index % count($COLORS)];
+
+    if (is_string($color)) {
+      return $color;
     } else {
-      $color = $AREA_COLORS[$index % count($AREA_COLORS)];
-      if (is_string($color)) {
-        return $color;
-      } else if (is_array($color)) {
-        return "rgba(" . implode(",", $AREA_COLORS[$index % count($AREA_COLORS)]). ",$transparency)";
-      }
+      return "rgba(" . implode(",", $color) . "," . ((is_string($opacity)) ? !!$opacity : $opacity) . ")";
     }
   }
 
@@ -73,7 +70,7 @@ class Chart Extends ProcessData {
   }
 
   private function __getY ($y) {
-    return $this->height - 580 * ($y - $this->range["min"]) / $this->range["range"];
+    return $this->adjusted_height - (($y - $this->range["min"]) / $this->range["range"]) * $this->adjusted_height + $this->padding["top"];
   }
 
   public function axis ($settings) {
@@ -84,18 +81,18 @@ class Chart Extends ProcessData {
     $lines = array();
 
     for ($x = $mod_min; $x <= $this->range["max"]; $x += $tick_size) {
-      if ($this->__getY($x) > $this->bounds["upper"] && $this->__getY($x) < $this->bounds["lower"]) {
+      $curr_y = $this->__getY($x);
 
-        if ($settings["draw"]["axis"]["ticks"]) {
+      if ($curr_y > $this->bounds["upper"] && $curr_y < $this->bounds["lower"]) {
+        if ($settings["draw"]["axis"]["y"]) {
           $svg = new SVGRender();
-          $svg->setHTML($x . "");
-
           $text = $svg->text(
+              number_format($x, $settings["axis"]["rounding"]),
               10,
-              $this->__getY($x),
-              $settings["font"]["family"],
-              $settings["font"]["weight"],
-              $settings["font"]["size"]
+              $curr_y,
+              $settings["axis"]["font"]["family"],
+              $settings["axis"]["font"]["weight"],
+              $settings["axis"]["font"]["size"]
           );
 
           array_push($texts, $text);
@@ -107,9 +104,9 @@ class Chart Extends ProcessData {
           $line = $svg->line(
               $settings["padding"]["left"],
               $settings["dimensions"]["width"] - $settings["padding"]["right"],
-              $this->__getY($x),
-              $this->__getY($x),
-              $settings["draw"]["axis"]["lineColor"],
+              $curr_y,
+              $curr_y,
+              $settings["axis"]["lineColor"],
               1
           );
           array_push($lines, $line);
@@ -137,20 +134,22 @@ class Chart Extends ProcessData {
           $path_d .= "L" . $arr[$x]["x"] . " " . $arr[$x]["y"] . " ";
         }
 
-        $svg = new SVGRender();
-        $circle = $svg->circle(
-            $arr[$x]["x"],
-            $arr[$x]["y"],
-            $settings["circleRadius"],
-            ($settings["draw"]["circles"]) ? $this->__lineColor($index) : "transparent",
-            $settings["circleRadius"],
-            "transparent"
-        );
-        array_push($circles, $circle);
+        if ($settings["draw"]["circles"]) {
+          $svg = new SVGRender();
+          $circle = $svg->circle(
+              $arr[$x]["x"],
+              $arr[$x]["y"],
+              $settings["circle"]["radius"],
+              $this->__lineColor($index, $settings["draw"]["circles"]),
+              $settings["circle"]["radius"],
+              "transparent"
+          );
+          array_push($circles, $circle);
+        }
       }
 
       $path = new SVGRender();
-      $path = $path->path($path_d, $this->__lineColor($index), $settings["lineWidth"]);
+      $path = $path->path($path_d, $this->__lineColor($index, $settings["draw"]["lines"]), $settings["line"]["width"]);
       array_push($paths, $path);
 
       $index++;
@@ -182,7 +181,7 @@ class Chart Extends ProcessData {
       $path_d .= "L" . $this->bounds["right"] . " " . $zero . " L" . $far_right . " " . $zero . " Z";
 
       $path = new SVGRender();
-      $path = $path->path($path_d, "transparent", 0, $this->__lineColor($index, "0.2"));
+      $path = $path->path($path_d, "transparent", 0, $this->__lineColor($index, 0.2));
       array_push($paths, $path);
 
       $index++;
@@ -191,15 +190,22 @@ class Chart Extends ProcessData {
     return implode("", $paths);
   }
 
+  public function drawDataBox () {
+    return "<div id='bcharts-data-box'></div>";
+  }
+
   public function draw ($settings) {
-    $html = $this->drawArea($settings);
+    $html = $this->axis($settings);
+    $html .= $this->drawArea($settings);
     $html .= $this->drawLines($settings);
-    $html .= $this->axis($settings);
 
     $svg = new SVGRender();
     $svg->setHTML($html);
 
-    return $svg->svg($this->width, $this->height);
+    $output = $this->drawDataBox();
+    $output .= $svg->svg($this->width, $this->height);
+
+    return $output;
   }
 
   public function construct ($settings) {
@@ -209,12 +215,14 @@ class Chart Extends ProcessData {
     $MIN = $this->range["min"];
 
     $page = new PageAssembler();
-    $page->addJSFile("../assets/js/events.js", NULL);
+    $page->addJSFile("js/tools.js", NULL);
     $page->addJSFile("js/events.js", array(
       "RANGE" => $this->range["range"],
-      "MIN" => $this->range["min"]
+      "MIN" => $this->range["min"],
+      "ADJ_HEIGHT" => $this->adjusted_height,
+      "PADDING_TOP" => $this->padding["top"]
     ));
-    $page->addCSSFile("../assets/css/main.css");
+    $page->addCSSFile("css/main.css");
 
     return array(
       "html" => $svg,

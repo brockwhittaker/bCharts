@@ -1,13 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900);
 
-/*
-svg text {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 200;
-  font-size: 16pt;
-  color: #444;
-}*/
-
 svg {
   font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
@@ -37,12 +29,4 @@ svg circle:hover {
 
 .bcharts-display {
   display: block !important;
-}
-
-.container {
-  position: relative;
-  display: block;
-  margin: 20vh auto;
-
-  border: 1px solid #CCC;
 }

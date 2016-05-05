@@ -1,0 +1,74 @@
+var metadata = {
+  "basic-usage": {
+    "title": "Basic Usage",
+    "html": "basic-usage.html"
+  },
+  "custom-usage": {
+    "title": "Custom Usage",
+    "html": "custom-usage.html"
+  },
+  "error": {
+    "title": "Error displaying this page for you!",
+    "html": "error.html"
+  },
+  "line-color": {
+    "title": "Setting Line Colors",
+    "html": "line-color.html"
+  },
+  "fill-color": {
+    "title": "Setting Fill Colors",
+    "html": "fill-color.html"
+  },
+  "draw-lines": {
+    "title": "Enable/Disable Lines",
+    "html": "draw-lines.html"
+  },
+  "draw-circles": {
+    "title": "Enable/Disable Points",
+    "html": "draw-circles.html"
+  },
+  "draw-axis-y": {
+    "title": "Enable/Disable Y-Axis",
+    "html": "draw-axis-y.html"
+  },
+  "draw-axis-lines": {
+    "title": "Enable/Disable Axis Lines",
+    "html": "draw-axis-lines.html"
+  },
+  "axis-line-color": {
+    "title": "Axis Line Color",
+    "html": "axis-line-color.html"
+  },
+  "axis-rounding": {
+    "title": "Axis Rounding",
+    "html": "axis-rounding.html"
+  },
+  "axis-font-family": {
+    "title": "Axis Font Family",
+    "html": "axis-font-family.html"
+  },
+  "axis-font-size": {
+    "title": "Axis Font Size",
+    "html": "axis-font-size.html"
+  },
+  "axis-font-weight": {
+    "title": "Axis Font Weight",
+    "html": "axis-font-weight.html"
+  },
+  "line-width": {
+    "title": "Line Width",
+    "html": "line-width.html"
+  },
+  "circle-radius": {
+    "title": "Circle Radius",
+    "html": "circle-radius.html"
+  },
+  "padding": {
+    "title": "Chart Padding",
+    "html": "padding.html"
+  },
+  "dimensions": {
+    "title": "Chart Dimensions",
+    "html": "dimensions.html"
+  }
+};

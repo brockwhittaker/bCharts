@@ -1,0 +1,181 @@
+body {
+  text-align: center;
+
+  background: #C8C4BF; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #BAC2C3 , #EBEAE5); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #BAC2C3 , #EBEAE5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  color: #666;
+}
+
+#settings_container {
+  float: left;
+  width: calc(100% - 100px);
+  text-align: center;
+  padding: 50px;
+  background-color: rgb(43, 145, 150);
+}
+
+.col {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0px 20px;
+}
+
+.ind-input {
+  margin: 10px 0px;
+  width: 500px;
+}
+
+.white-bg {
+  background-color: rgba(255,255,255,0.5);
+}
+
+.container {
+  width: 80%;
+  display: none;
+  position: relative;
+  margin: 50px 0px;
+  z-index: 1;
+  background-color: rgba(255,255,255,1);
+  border-radius: 10px;
+  box-shadow: 5px 5px 80px rgba(20,20,20,0.1);
+  padding: 10px;
+}
+
+#get_code {
+  display: none;
+  margin-bottom: 50px;
+
+  font-size: 2rem;
+  font-weight: 300;
+
+  cursor: pointer;
+}
+
+.code-symbol {
+  font-weight: 600;
+}
+
+#code_container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  text-align: left;
+  color: #fff;
+  width: calc(100% - 100px);
+  height: calc(100vh - 100px);
+  padding: 50px;
+  background-color: #1F2F3E;
+  display: none;
+  z-index: 2;
+
+  transition: all 0.2s ease;
+}
+
+#code_container h1 {
+  font-weight: 300;
+}
+
+#code_container #exit {
+  position: absolute;
+  padding: 1rem;
+  top: 0;
+  right: 1rem;
+  font-weight: 200;
+  font-size: 2rem;
+}
+
+#code {
+  margin: 20px;
+}
+
+.show {
+  display: inline-block !important;
+}
+
+input, textarea {
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+}
+
+label {
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+}
+
+input,
+textarea {
+  float: right;
+  width: 200px;
+  padding: 2px;
+  color: #fff;
+  background-color: transparent;
+  height: 21px;
+  outline: none;
+  border: 1px solid rgba(255,255,255,0.5);
+  border-radius: 4px;
+}
+
+textarea {
+  display: block;
+  clear: both;
+  float: none;
+  width: 100%;
+  height: 74px;
+}
+
+label.checkbox-label {
+  float: left;
+}
+
+button#generate_button {
+  display: block;
+
+  padding: 10px 30px;
+  margin: 20px auto 0 auto;
+
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  color: #fff;
+
+  background-color: transparent;
+  outline: none;
+  border: 1px solid rgba(255,255,255,0.5);
+  border-radius: 4px;
+
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+button#generate_button:hover {
+  background-color: #fff;
+  color: rgba(198, 89, 65, 1);
+}
+
+.checkbox {
+  float: right;
+
+  margin-left: 20px;
+  width: 25px;
+  height: 25px;
+  border: 1px solid rgba(255,255,255,0.5);
+  border-radius: 4px;
+
+  background-size: 90% 90%;
+  background-repeat: none;
+  background-position: center center;
+}
+
+.checked {
+  background-image: url(../assets/checkmark.png);
+}
+
+.clear {
+  clear: both;
+}
+
+.light {
+  font-weight: 300;
+}

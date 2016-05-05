@@ -38,7 +38,7 @@ class ProcessData {
     return $this->range;
   }
 
-  public function relativeArrays ($ratio, $stick_to_front) {
+  public function relativeArrays ($stick_to_front) {
     $this->__getRange();
 
     $longest = $this->range["longest"] - 1;
@@ -49,7 +49,6 @@ class ProcessData {
       array_push($this->relative, array());
 
       $offset = ($stick_to_front) ? (($longest + 1) - count($this->data[$x])) / $longest : 0;
-
       for ($y = 0; $y < count($this->data[$x]); $y++) {
         $this->relative[$x][$y] = array(
           "x" => $this->padding["left"] + $this->adjusted_width * ($y / $longest + $offset),
